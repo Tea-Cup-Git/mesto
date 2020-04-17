@@ -11,13 +11,13 @@
 
 <body class="root">
   <div class="page">
-    <!--Шапка сайта-->
+    <!--Шапка-->
     <header class="header">
       <img class="header__logo" src="images/logo.svg" alt="Mesto. Russia">
     </header>
-    <!--Контентная часть сайта-->
+    <!--Основная часть-->
     <main class="content">
-      <section class="profile">
+      <section class="profile"> <!--Данные профиля-->
         <img class="profile__avatar" src="images/image.jpg" alt="Аватар пользователя">
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто
@@ -27,44 +27,55 @@
         </div>
         <button class="profile__add-button"></button>
       </section>
-      <section class="photo-grid">
-        <figure class="card">
+      <section class="photo-grid"> <!--Сетка с карточками-->
+        <div class="card">
           <img class="card__image" src="./images/kirill-pershin-1088404-unsplash.png" alt="Руины в горах">
-          <figcaption class="card__name">Карачаевск</figcaption>
+          <p class="card__name">Карачаевск</p>
           <button class="card__like-button"></button>
-        </figure>
-        <figure class="card">
+        </div>
+        <div class="card">
           <img class="card__image" src="./images/kirill-pershin-1404681-unsplash.png" alt="Гора вдали">
-          <figcaption class="card__name">Гора Эльбрус</figcaption>
+          <p class="card__name">Гора Эльбрус</p>
           <button class="card__like-button"></button>
-        </figure>
-        <figure class="card">
+        </div>
+        <div class="card">
           <img class="card__image" src="./images/kirill-pershin-1556355-unsplash.png" alt="Лес и горы">
-          <figcaption class="card__name">Домбай</figcaption>
+          <p class="card__name">Домбай</p>
           <button class="card__like-button"></button>
-        </figure>
-        <figure class="card">
+        </div>
+        <div class="card">
           <img class="card__image" src="./images/sergey-pesterev-RbRWDUyDEWQ-unsplash.jpg" alt="Тающий лёд">
-          <figcaption class="card__name">Озеро Байкал</figcaption>
+          <p class="card__name">Озеро Байкал</p>
           <button class="card__like-button"></button>
-        </figure>
-        <figure class="card">
+        </div>
+        <div class="card">
           <img class="card__image" src="./images/sergey-nikolaev-4KSeUjv4gaE-unsplash.jpg" alt="Серые горы под голубым небом">
-          <figcaption class="card__name">Камчатка</figcaption>
+          <p class="card__name">Камчатка</p>
           <button class="card__like-button"></button>
-        </figure>
-        <figure class="card">
-          <img class="card__image" src="./images/andrey-konstantinov-SrBKcHvZbnw-unsplash.jpg" alt="Горная долина">
-          <figcaption class="card__name">Остров Крым</figcaption>
+        </div>
+        <div class="card">
+          <img class="card__image" src="./images/andrey-konstantinov-SrBKcHvZbnw-unsplash.jpg" alt="Горная долина, залитая солнечным светом">
+          <p class="card__name">Остров Крым</p>
           <button class="card__like-button"></button>
-        </figure>
+        </div>
       </section>
     </main>
-    <!--Подвал сайта-->
+    <!--Всплывающее окно-->
+    <div class="popup">
+      <div class="popup__container">
+        <h2 class="popup__header">Редактировать профиль</h2>
+        <input class="popup__input popup__input_name" type="text" placeholder="Жак-Ив Кусто">
+        <input class="popup__input popup__input_about" type="text" placeholder="Исследователь океана">
+        <button class="popup__submit-button" type="submit">Сохранить</button>
+        <button class="popup__close-button"></button>
+      </div>
+    </div>
+    <!--Подвал-->
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
   </div>
+  <script src="scripts/index.js"></script>
 </body>
 
 </html>

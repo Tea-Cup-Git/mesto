@@ -8,6 +8,7 @@
   background-position: center;
   box-sizing: border-box;
   cursor: pointer;
+  outline: none;
   margin-left: 5px;
 }
 
