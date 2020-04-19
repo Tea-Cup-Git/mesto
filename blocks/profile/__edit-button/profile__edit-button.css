@@ -9,7 +9,9 @@
   box-sizing: border-box;
   cursor: pointer;
   outline: none;
-  margin-left: 5px;
+  margin-top: 7px;
+  margin-left: 17px;
+  align-self: center;
 }
 
 .profile__edit-button:hover {

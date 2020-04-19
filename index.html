@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./pages/index.css">
-  <meta name="author" content="Татьяна Лебедева">
-  <title>Место</title>
+  <meta name="author" content="Tatiana Lebedeva">
+  <title>Mesto</title>
 </head>
 
 <body class="root">
@@ -20,9 +20,10 @@
       <section class="profile"> <!--Данные профиля-->
         <img class="profile__avatar" src="images/image.jpg" alt="Аватар пользователя">
         <div class="profile__info">
-          <h1 class="profile__name">Жак-Ив Кусто
+          <div class="profile__button-wrapper">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
             <button class="profile__edit-button"></button>
-          </h1>
+          </div>
           <p class="profile__about">Исследователь океана</p>
         </div>
         <button class="profile__add-button"></button>
@@ -62,13 +63,13 @@
     </main>
     <!--Всплывающее окно-->
     <div class="popup">
-      <div class="popup__container">
+      <form class="popup__container">
         <h2 class="popup__header">Редактировать профиль</h2>
-        <input class="popup__input popup__input_name" type="text" placeholder="Жак-Ив Кусто">
-        <input class="popup__input popup__input_about" type="text" placeholder="Исследователь океана">
+        <input class="popup__input popup__input_name" type="text" value="Жак-Ив Кусто">
+        <input class="popup__input popup__input_about" type="text" value="Исследователь океана">
         <button class="popup__submit-button" type="submit">Сохранить</button>
         <button class="popup__close-button"></button>
-      </div>
+      </form>
     </div>
     <!--Подвал-->
     <footer class="footer">
