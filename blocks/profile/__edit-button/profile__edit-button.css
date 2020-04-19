@@ -1,5 +1,5 @@
 .profile__edit-button {
-  width: 18px;
+  min-width: 18px;
   height: 18px;
   border: 1px solid #FFFFFF;
   background: url(../../../images/edit-button.svg);
@@ -18,3 +18,12 @@
   opacity: 0.6;
   transition: opacity .3s ease;
 }
+
+@media screen and (min-width: 920px) {
+  .profile__edit-button {
+    min-width: 24px;
+    height: 24px;
+    background-size: 10px;
+  }
+}
+
