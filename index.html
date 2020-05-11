@@ -33,7 +33,7 @@
       <section class="photo-grid">
         <template id="card-template"> <!--Шаблон карточки, заполняется через JS-->
           <div class="card">
-            <img class="card__image" src="" alt="image">
+            <img class="card__image" src="" alt="">
             <p class="card__name"></p>
             <button class="card__trash-button"></button> <!--Кнопка: удалить карточку-->
             <button class="card__like-button"></button> <!--Кнопка: лайк-->
@@ -60,6 +60,13 @@
         <button class="popup__submit-button" type="submit">Создать</button> <!--Кнопка: создать-->
         <button class="popup__close-button" id="add-form_close-button" type="reset"></button> <!--Кнопка: закрыть-->
       </form>
+    </div>
+    <div class="popup" id="image-expander">
+      <figure class="popup__container popup__container_img">
+        <img class="popup__image" src="" alt="">
+        <figcaption class="popup__figcaption"></figcaption>
+        <button class="popup__close-button" id="image-expander_close-button" type="reset"></button> <!--Кнопка: закрыть-->
+      </figure>
     </div>
     <!--Подвал-->
     <footer class="footer">
