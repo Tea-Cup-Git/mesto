@@ -72,21 +72,21 @@ function openAddCardPopup () {
   popupAddCard.classList.add('popup_open');
 }
 
-/* Функция: отобразить дефолтные карточки (при перезагрузке страницы) */
+/* Функция: отобразить дефолтные карточки */
 function renderCards() {
   cardsContainer.innerHTML = '';
   initialCards.forEach(renderCard);
-  addEventListeners();
 }
 
 renderCards();
 
 /* Функция: добавить карточку */
-function renderCard(item, index) {
+function renderCard(item) {
   const cardElement = cardTemplate.cloneNode(true);
   cardElement.querySelector('.card__name').textContent = item.name;
   cardElement.querySelector('.card__image').src = item.link;
-  cardElement.querySelector('.card').setAttribute('id', index);
+  cardElement.querySelector('.card__like-button').addEventListener('click', handleLikeToggler);
+  cardElement.querySelector('.card__trash-button').addEventListener('click', handleDelete);
   cardsContainer.appendChild(cardElement);
 }
 
@@ -103,17 +103,16 @@ function handleAddCardSubmit(event) {
   closePopup();
 }
 
-/* Функция: добавить слушателя каждой кнопке удаления карточки */
-function addEventListeners() {
-  document.querySelectorAll('.card__trash-button').forEach(deleteButton => {
-    deleteButton.addEventListener('click', handleDelete);
-  })
+function handleLikeToggler(event) {
+  event.target.classList.toggle('card__like-button_active');
 }
 
 function handleDelete(event) {
-  const index = event.target.parentNode.getAttribute('id');
-  initialCards.splice(index, 1);
-  renderCards();
+  const cardElement = event.target.closest('.card');
+  cardElement.querySelector('.card__like-button').removeEventListener('click', handleLikeToggler);
+  cardElement.querySelector('.card__trash-button').removeEventListener('click', handleDelete);
+  /*cardElement.querySelector('.card__image').removeEventListener('click', openPopupImg);*/
+  cardElement.remove();
 }
 
 editButton.addEventListener('click', openProfilePopup);
