@@ -1,4 +1,4 @@
-# Проект 4: Место
+# Проект 5: Место
 
 ### Описание
 
@@ -16,8 +16,8 @@
 
 **Figma**
 
-* [Ссылка на макет в Figma](https://www.figma.com/file/StZjf8HnoeLdiXS7dYrLAh/JavaScript.-Sprint-4)
+* [Ссылка на макет](https://www.figma.com/file/StZjf8HnoeLdiXS7dYrLAh/JavaScript.-Sprint-4)
 
 **Github Pages**
 
-* [Ссылка на готовую страницу](https://tea-cup-git.github.io/mesto/index.html)
+* [Ссылка на готовый проект](https://tea-cup-git.github.io/mesto/index.html)
