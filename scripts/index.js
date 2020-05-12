@@ -44,6 +44,8 @@ const closeImageButton = document.querySelector('#image-expander_close-button');
 /* Переменные для элементов Pop-Up */
 const popupProfileEdit = document.querySelector('#edit-form');
 const popupAddCard = document.querySelector('#add-form');
+const popupImage = document.querySelector('#image-expander');
+const popupFigcaption = document.querySelector('.popup__figcaption');
 const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
 const formProfile = document.querySelector('#edit-form_container');
@@ -68,10 +70,11 @@ function openProfilePopup() {
 }
 
 /* Функция: сохранить данные профиля */
-function handleProfileSubmit() {
-    profileName.textContent = inputProfileName.value;
-    profileAbout.textContent = inputProfileAbout.value;
-    closePopup();
+function handleProfileSubmit(event) {
+  event.preventDefault();
+  profileName.textContent = inputProfileName.value;
+  profileAbout.textContent = inputProfileAbout.value;
+  closePopup();
 }
 
 /* Функция: открыть окно создания карточки */
@@ -99,19 +102,9 @@ function renderCard(item) {
   cardsContainer.appendChild(cardElement);
 }
 
-const popupImage = document.querySelector('#image-expander');
-const popupFigcaption = document.querySelector('.popup__figcaption');
-
-function openImagePopup(event) {
-  popupImage.classList.add('popup_open');
-  document.querySelector('.popup__image').src = event.target.src;
-  document.querySelector('.popup__image').alt = event.target.alt;
-  popupFigcaption.textContent = event.target.alt;
-}
-
 function handleAddCardSubmit(event) {
   event.preventDefault();
-  let userCard = {
+  const userCard = {
     name: inputCardName.value,
     link: inputCardImage.value,
     alt: inputCardName.value
@@ -134,7 +127,16 @@ function handleDelete(event) {
   cardElement.querySelector('.card__like-button').removeEventListener('click', handleLikeToggler);
   cardElement.querySelector('.card__trash-button').removeEventListener('click', handleDelete);
   cardElement.querySelector('.card__image').removeEventListener('click', openImagePopup);
-  cardElement.remove();
+  cardsContainer.removeChild(cardElement);
+  initialCards.splice(cardElement, 1);
+}
+
+/* Функция: развернуть картинку */
+function openImagePopup(event) {
+  popupImage.classList.add('popup_open');
+  document.querySelector('.popup__image').src = event.target.src;
+  document.querySelector('.popup__image').alt = event.target.alt;
+  popupFigcaption.textContent = event.target.alt;
 }
 
 editButton.addEventListener('click', openProfilePopup);
