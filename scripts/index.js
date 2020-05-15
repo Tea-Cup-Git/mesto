@@ -83,12 +83,7 @@ function openAddCardPopup () {
 }
 
 /* Функция: отобразить дефолтные карточки */
-function renderCards() {
-  cardsContainer.innerHTML = '';
-  initialCards.forEach(renderCard);
-}
-
-renderCards();
+initialCards.forEach(renderCard);
 
 /* Функция: добавить карточку */
 function renderCard(item) {
@@ -99,7 +94,8 @@ function renderCard(item) {
   cardElement.querySelector('.card__like-button').addEventListener('click', handleLikeToggler);
   cardElement.querySelector('.card__trash-button').addEventListener('click', handleDelete);
   cardElement.querySelector('.card__image').addEventListener('click', openImagePopup);
-  cardsContainer.appendChild(cardElement);
+  const firstElement = cardsContainer.firstChild;
+  cardsContainer.insertBefore(cardElement, firstElement);
 }
 
 function handleAddCardSubmit(event) {
@@ -109,10 +105,9 @@ function handleAddCardSubmit(event) {
     link: inputCardImage.value,
     alt: inputCardName.value
   };
-  initialCards.unshift(userCard);
+  renderCard(userCard);
   inputCardName.value = '';
   inputCardImage.value ='';
-  renderCards();
   closePopup();
 }
 
@@ -128,7 +123,6 @@ function handleDelete(event) {
   cardElement.querySelector('.card__trash-button').removeEventListener('click', handleDelete);
   cardElement.querySelector('.card__image').removeEventListener('click', openImagePopup);
   cardsContainer.removeChild(cardElement);
-  initialCards.splice(cardElement, 1);
 }
 
 /* Функция: развернуть картинку */
