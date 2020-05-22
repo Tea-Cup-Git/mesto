@@ -43,20 +43,24 @@
     </main>
     <!--Всплывающее окно: редактировать профиль-->
     <div class="popup" id="edit-form">
-      <form class="popup__container" id="edit-form_container">
+      <form class="popup__container" id="edit-form_container" novalidate>
         <h2 class="popup__header">Редактировать профиль</h2>
-        <input class="popup__input popup__input_type_user-name" type="text" value="" placeholder="Имя" required>
-        <input class="popup__input popup__input_type_user-about" type="text" value="" placeholder="О себе" required>
+        <input id="user-input" class="popup__input popup__input_type_user-name" type="text" minlength="2" maxlength="40" value="" placeholder="Имя" required>
+        <span id="user-input-error" class="popup__input-error"></span>
+        <input id="about-input" class="popup__input popup__input_type_user-about" type="text" minlength="2" maxlength="200" value="" placeholder="О себе" required>
+        <span id="about-input-error" class="popup__input-error"></span>
         <button class="popup__submit-button" type="submit">Сохранить</button> <!--Кнопка: сохранить-->
         <button class="popup__close-button" id="edit-form_close-button" type="reset"></button> <!--Кнопка: закрыть-->
       </form>
     </div>
     <!--Всплывающее окно: добавить карточку-->
     <div class="popup" id="add-form">
-      <form class="popup__container" id="add-form_container">
+      <form class="popup__container" id="add-form_container" novalidate>
         <h2 class="popup__header">Новое место</h2>
-        <input class="popup__input popup__input_type_place-name" type="text" value="" placeholder="Название" required>
-        <input class="popup__input popup__input_type_image-link" type="text" value="" placeholder="Ссылка на картинку" required>
+        <input id="name-input" class="popup__input popup__input_type_place-name" type="text" minlength="1" maxlength="30" value="" placeholder="Название" required>
+        <span id="name-input-error" class="popup__input-error"></span>
+        <input id="link-input" class="popup__input popup__input_type_image-link" type="url" value="" placeholder="Ссылка на картинку" required>
+        <span id="link-input-error" class="popup__input-error"></span>
         <button class="popup__submit-button" type="submit">Создать</button> <!--Кнопка: создать-->
         <button class="popup__close-button" id="add-form_close-button" type="reset"></button> <!--Кнопка: закрыть-->
       </form>
@@ -75,6 +79,7 @@
   </div>
   <!--Подключаем JS-->
   <script src="scripts/index.js"></script>
+  <script src="scripts/validate.js"></script>
 </body>
 
 </html>
