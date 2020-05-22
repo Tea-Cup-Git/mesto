@@ -1,4 +1,4 @@
-/* Переменные для работы с карточками */
+// Переменные для работы с карточками
 const initialCards = [
   {
       name: 'Архыз',
@@ -34,14 +34,14 @@ const initialCards = [
 const cardTemplate = document.querySelector('#card-template').content;
 const cardsContainer = document.querySelector('.photo-grid');
 
-/* Переменные для кнопок */
+// Переменные для кнопок
 const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
 const closeEditFormButton = document.querySelector('#edit-form_close-button');
 const closeAddFormButton = document.querySelector('#add-form_close-button');
 const closeImageButton = document.querySelector('#image-expander_close-button');
 
-/* Переменные для элементов Pop-Up */
+// Переменные для элементов Pop-Up
 const popupProfileEdit = document.querySelector('#edit-form');
 const popupAddCard = document.querySelector('#add-form');
 const popupImage = document.querySelector('#image-expander');
@@ -55,21 +55,22 @@ const inputProfileAbout = document.querySelector('.popup__input_type_user-about'
 const inputCardName = document.querySelector('.popup__input_type_place-name');
 const inputCardImage = document.querySelector('.popup__input_type_image-link');
 
-/* Функция: закрыть всплывающее окно */
+// Функция: закрыть всплывающее окно
 function closePopup() {
   popupProfileEdit.classList.remove('popup_open');
   popupAddCard.classList.remove('popup_open');
   popupImage.classList.remove('popup_open');
 }
 
-/* Функция: открыть окно редактирования профиля */
+// Функция: открыть окно редактирования профиля
 function openProfilePopup() {
   popupProfileEdit.classList.add('popup_open');
   inputProfileName.value = profileName.textContent;
   inputProfileAbout.value = profileAbout.textContent;
+  enableValidation();
 }
 
-/* Функция: сохранить данные профиля */
+// Функция: сохранить данные профиля
 function handleProfileSubmit(event) {
   event.preventDefault();
   profileName.textContent = inputProfileName.value;
@@ -77,21 +78,21 @@ function handleProfileSubmit(event) {
   closePopup();
 }
 
-/* Функция: открыть окно создания карточки */
+// Функция: открыть окно создания карточки
 function openAddCardPopup () {
   popupAddCard.classList.add('popup_open');
+  enableValidation();
 }
 
-/* Функция: отобразить дефолтные карточки */
+// Функция: отобразить дефолтные карточки
 initialCards.forEach(renderCard);
 
-/* Функция: добавить карточку */
+// Функция: добавить карточку
 function renderCard(item) {
   const cardElement = cardTemplate.cloneNode(true);
   cardElement.querySelector('.card__name').textContent = item.name;
   cardElement.querySelector('.card__image').alt = item.alt;
   cardElement.querySelector('.card__image').src = item.link;
-  cardElement.querySelector('.card__like-button').addEventListener('click', handleLikeToggler);
   cardElement.querySelector('.card__trash-button').addEventListener('click', handleDelete);
   cardElement.querySelector('.card__image').addEventListener('click', openImagePopup);
   const firstElement = cardsContainer.firstChild;
@@ -111,27 +112,42 @@ function handleAddCardSubmit(event) {
   closePopup();
 }
 
-/* Функция: переключатель лайков */
-function handleLikeToggler(event) {
-  event.target.classList.toggle('card__like-button_active');
-}
+// Функция: переключатель лайков
+cardsContainer.addEventListener('click', function (event) {
+  if (event.target.classList.contains('card__like-button')) {
+    event.target.classList.toggle('card__like-button_active');
+  }
+});
 
-/* Функция: удалить карточку */
+// Функция: удалить карточку
 function handleDelete(event) {
   const cardElement = event.target.closest('.card');
-  cardElement.querySelector('.card__like-button').removeEventListener('click', handleLikeToggler);
   cardElement.querySelector('.card__trash-button').removeEventListener('click', handleDelete);
   cardElement.querySelector('.card__image').removeEventListener('click', openImagePopup);
   cardsContainer.removeChild(cardElement);
 }
 
-/* Функция: развернуть картинку */
+// Функция: развернуть картинку
 function openImagePopup(event) {
   popupImage.classList.add('popup_open');
   document.querySelector('.popup__image').src = event.target.src;
   document.querySelector('.popup__image').alt = event.target.alt;
   popupFigcaption.textContent = event.target.alt;
 }
+
+// Функция: закрыть Pop-Up при клике на оверлей
+document.addEventListener('mousedown', function (event) {
+  if (event.target.classList.contains('popup')) {
+    closePopup();
+  }
+});
+
+// Функция: закрыть Pop-Up при клике на Esc
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'Escape') {
+    closePopup();
+  }
+});
 
 editButton.addEventListener('click', openProfilePopup);
 addButton.addEventListener('click', openAddCardPopup);
