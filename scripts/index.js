@@ -4,7 +4,7 @@ const validationSettings = {
   inputSelector: '.popup__input',
   buttonSelector: '.popup__submit-button',
   inactiveButtonClass: 'popup__submit-button_inactive',
-  inputErrorClass: 'popup__input-error',
+  inputErrorClass: '.popup__input-error',
   errorClass: 'popup__input-error_active'
 }
 
@@ -66,7 +66,7 @@ const inputCardImage = document.querySelector('.popup__input_type_image-link');
 
 // Функция: закрыть Pop-Up при клике на ESC и Overlay
 function closePopupOnEvent(event) {
-  if ((event.target.classList.contains('popup')) || (event.key === 'Escape')) {
+  if (event.target.classList.contains('popup')) {
     closePopup(event.target);
   }
   if (event.key === 'Escape') {
@@ -88,21 +88,30 @@ function toggleEventListeners(popupElement) {
 
 // Функция: открыть Pop-Up
 function openPopup(popupElement) {
-  popupElement.classList.add('popup_open');
+  // Зачистка ошибок при открытии формы
+  if (popupAddCard) {
+    document.querySelector('#name-input-error').textContent = '';
+    document.querySelector('#link-input-error').textContent = '';
+  }
+  if (popupEditProfile) {
+    document.querySelector('#user-input-error').textContent = '';
+    document.querySelector('#about-input-error').textContent = '';
+  }
   toggleEventListeners(popupElement);
-  enableValidation(validationSettings);
+  popupElement.classList.add('popup_open');
 }
 
 // Функция: закрыть Pop-Up
 function closePopup(popupElement) {
-  popupElement.classList.remove('popup_open');
   toggleEventListeners(popupElement);
+  popupElement.classList.remove('popup_open');
 }
 
 // Функция: открыть Pop-Up редактирования профиля
 function openProfilePopup() {
   inputProfileName.value = profileName.textContent;
   inputProfileAbout.value = profileAbout.textContent;
+  //buttonElement.disabled = true;
   openPopup(popupEditProfile);
 }
 

@@ -43,7 +43,7 @@ const toggleButtonState = (inputList, buttonElement, obj) => {
 // Функция: проверить валидность полей на каждый ввод символа
 const setEventListeners = (formElement, obj) => {
   const inputList = Array.from(formElement.querySelectorAll(obj.inputSelector));
-  const buttonElement = document.querySelector(obj.buttonSelector);
+  const buttonElement = formElement.querySelector(obj.buttonSelector);
   toggleButtonState(inputList, buttonElement, obj);
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', () => {
