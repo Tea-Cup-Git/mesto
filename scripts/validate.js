@@ -29,17 +29,6 @@ const hasInvalidInput = (inputList) => {
   })
 };
 
-// Функция: переключение состояния кнопки
-const toggleButtonState = (inputList, buttonElement, obj) => {
-  if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(obj.inactiveButtonClass);
-    buttonElement.disabled = true;
-  } else {
-    buttonElement.classList.remove(obj.inactiveButtonClass);
-    buttonElement.disabled = false;
-  }
-};
-
 // Функция: проверить валидность полей на каждый ввод символа
 const setEventListeners = (formElement, obj) => {
   const inputList = Array.from(formElement.querySelectorAll(obj.inputSelector));
@@ -51,6 +40,17 @@ const setEventListeners = (formElement, obj) => {
       toggleButtonState(inputList, buttonElement, obj);
     });
   });
+};
+
+// Функция: переключение состояния кнопки
+const toggleButtonState = (inputList, buttonElement, obj) => {
+  if (hasInvalidInput(inputList)) {
+    buttonElement.classList.add(obj.inactiveButtonClass);
+    buttonElement.disabled = true;
+  } else {
+    buttonElement.classList.remove(obj.inactiveButtonClass);
+    buttonElement.disabled = false;
+  }
 };
 
 // Функция: активировать валидацию полей всех форм
