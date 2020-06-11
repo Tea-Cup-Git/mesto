@@ -42,34 +42,34 @@
       </section>
     </main>
     <!--Всплывающее окно: редактировать профиль-->
-    <div class="popup" id="edit-form">
-      <form class="popup__container" id="edit-form_container" novalidate>
+    <div id="edit-form" class="popup">
+      <form id="edit-form_container" class="popup__container" novalidate>
         <h2 class="popup__header">Редактировать профиль</h2>
         <input id="user-input" class="popup__input popup__input_type_user-name" type="text" minlength="2" maxlength="40" value="" placeholder="Имя" required>
         <span id="user-input-error" class="popup__input-error"></span>
         <input id="about-input" class="popup__input popup__input_type_user-about" type="text" minlength="2" maxlength="200" value="" placeholder="О себе" required>
         <span id="about-input-error" class="popup__input-error"></span>
         <button id="edit-form-submit" class="popup__submit-button" type="submit">Сохранить</button> <!--Кнопка: сохранить-->
-        <button class="popup__close-button" id="edit-form_close-button" type="reset"></button> <!--Кнопка: закрыть-->
+        <button id="edit-form_close-button" class="popup__close-button"  type="reset"></button> <!--Кнопка: закрыть-->
       </form>
     </div>
     <!--Всплывающее окно: добавить карточку-->
-    <div class="popup" id="add-form">
-      <form class="popup__container" id="add-form_container" novalidate>
+    <div id="add-form" class="popup">
+      <form id="add-form_container" class="popup__container" novalidate>
         <h2 class="popup__header">Новое место</h2>
         <input id="name-input" class="popup__input popup__input_type_place-name" type="text" minlength="1" maxlength="30" value="" placeholder="Название" required>
         <span id="name-input-error" class="popup__input-error"></span>
         <input id="link-input" class="popup__input popup__input_type_image-link" type="url" value="" placeholder="Ссылка на картинку" required>
         <span id="link-input-error" class="popup__input-error"></span>
         <button id="add-form-submit" class="popup__submit-button" type="submit">Создать</button> <!--Кнопка: создать-->
-        <button class="popup__close-button" id="add-form_close-button" type="reset"></button> <!--Кнопка: закрыть-->
+        <button id="add-form_close-button" class="popup__close-button" type="reset"></button> <!--Кнопка: закрыть-->
       </form>
     </div>
-    <div class="popup" id="image-expander">
+    <div id="image-expander" class="popup">
       <figure class="popup__container popup__container_img">
         <img class="popup__image" src="" alt="">
         <figcaption class="popup__figcaption"></figcaption>
-        <button class="popup__close-button" id="image-expander_close-button" type="reset"></button> <!--Кнопка: закрыть-->
+        <button id="image-expander_close-button" class="popup__close-button" type="reset"></button> <!--Кнопка: закрыть-->
       </figure>
     </div>
     <!--Подвал-->
@@ -78,8 +78,7 @@
     </footer>
   </div>
   <!--Подключаем JS-->
-  <script src="scripts/index.js"></script>
-  <script src="scripts/validate.js"></script>
+  <script type="module" src="scripts/index.js"></script>
 </body>
 
 </html>
