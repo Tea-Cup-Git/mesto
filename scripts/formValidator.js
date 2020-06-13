@@ -1,4 +1,4 @@
-export class FormValidator {
+export default class FormValidator {
   constructor(formConfig, formElement) {
     this._formConfig = formConfig;
     this._formElement = formElement;
@@ -36,7 +36,7 @@ export class FormValidator {
   }
 
   // Переключение состояния кнопки
-  toggleButtonState(inputList, buttonElement, formConfig) {
+  _toggleButtonState(inputList, buttonElement, formConfig) {
     if (this._hasInvalidInput(inputList)) {
       buttonElement.classList.add(formConfig.inactiveButtonClass);
       buttonElement.disabled = true;
@@ -50,11 +50,11 @@ export class FormValidator {
   _setEventListeners(formElement, formConfig) {
     const inputList = Array.from(formElement.querySelectorAll(formConfig.inputSelector));
     const buttonElement = formElement.querySelector(formConfig.buttonSelector);
-    this.toggleButtonState(inputList, buttonElement, formConfig);
+    this._toggleButtonState(inputList, buttonElement, formConfig);
     inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(formElement, inputElement, formConfig);
-        this.toggleButtonState(inputList, buttonElement, formConfig);
+        this._toggleButtonState(inputList, buttonElement, formConfig);
       });
     });
   }

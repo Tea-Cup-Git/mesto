@@ -8,6 +8,7 @@
   overflow: hidden;
   white-space:nowrap;
   text-overflow: ellipsis;
+  cursor: default;
 }
 
 @media screen and (min-width: 920px) {

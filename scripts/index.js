@@ -1,40 +1,19 @@
-import { Card } from './card.js';
-import { FormValidator } from './formValidator.js';
+import Card from './Card.js';
+import FormValidator from './FormValidator.js';
+
+// Конфиг для валидации
+const formConfig = {
+  formSelector: '.popup__container',
+  inputSelector: '.popup__input',
+  buttonSelector: '.popup__submit-button',
+  inactiveButtonClass: 'popup__submit-button_inactive',
+  inputErrorClass: '.popup__input-error',
+  errorClass: 'popup__input-error_active'
+};
 
 // Переменные для работы с карточками
-const initialCards = [
-  {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
-      alt: 'Архыз'
-  },
-  {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
-      alt: 'Челябинская область'
-  },
-  {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
-      alt: 'Иваново'
-  },
-  {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
-      alt: 'Камчатка'
-  },
-  {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
-      alt: 'Холмогорский район'
-  },
-  {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
-      alt: 'Байкал'
-  }
-];
 const cardsContainer = document.querySelector('.photo-grid');
+import {initialCards} from './initialCards.js';
 
 // Переменные для кнопок
 const editFormButton = document.querySelector('.profile__edit-button');
@@ -48,7 +27,7 @@ const submitEditButton = document.querySelector('#edit-form-submit');
 // Переменные для элементов Pop-Up
 const popupEditProfile = document.querySelector('#edit-form');
 const popupAddCard = document.querySelector('#add-form');
-export const popupImage = document.querySelector('#image-expander');
+import {popupExpandedImage} from './utils.js';
 const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
 const formProfile = document.querySelector('#edit-form_container');
@@ -58,31 +37,12 @@ const inputProfileAbout = document.querySelector('.popup__input_type_user-about'
 const inputCardName = document.querySelector('.popup__input_type_place-name');
 const inputCardImage = document.querySelector('.popup__input_type_image-link');
 
-// Настройка валидации
-const formConfig = {
-  formSelector: '.popup__container',
-  inputSelector: '.popup__input',
-  buttonSelector: '.popup__submit-button',
-  inactiveButtonClass: 'popup__submit-button_inactive',
-  inputErrorClass: '.popup__input-error',
-  errorClass: 'popup__input-error_active'
-}
+
+// Включить валидацию форм
 const formProfileValidator = new FormValidator(formConfig, formProfile);
 formProfileValidator.enableValidation();
 const formAddCardValidator = new FormValidator(formConfig, formAddCard);
 formAddCardValidator.enableValidation();
-
-
-// Закрыть Pop-Up при клике на ESC и Overlay
-function closePopupOnEvent(event) {
-  if (event.target.classList.contains('popup')) {
-    closePopup(event.target);
-  }
-  if (event.key === 'Escape') {
-    const popupElement = document.querySelector('.popup_open');
-    closePopup(popupElement);
-  }
-}
 
 // Очистить ошибки полей ввода
 function resetErrors(popupElement) {
@@ -91,18 +51,10 @@ function resetErrors(popupElement) {
 }
 
 // Открыть Pop-Up
-export function openPopup(popupElement) {
-  document.addEventListener('mousedown', closePopupOnEvent);
-  document.addEventListener('keydown', closePopupOnEvent);
-  popupElement.classList.add('popup_open');
-}
+import {openPopup} from './utils.js';
 
 // Закрыть Pop-Up
-function closePopup(popupElement) {
-  document.removeEventListener('mousedown', closePopupOnEvent);
-  document.removeEventListener('keydown', closePopupOnEvent);
-  popupElement.classList.remove('popup_open');
-}
+import {closePopup} from './utils.js';
 
 // Открыть Pop-Up редактирования профиля
 function openProfilePopup() {
@@ -159,6 +111,6 @@ editFormButton.addEventListener('click', openProfilePopup);
 addFormButton.addEventListener('click', openAddCardPopup);
 closeEditFormButton.addEventListener('click', () => closePopup(popupEditProfile));
 closeAddFormButton.addEventListener('click', () => closePopup(popupAddCard));
-closeImageButton.addEventListener('click', () => closePopup(popupImage));
+closeImageButton.addEventListener('click', () => closePopup(popupExpandedImage));
 formProfile.addEventListener('submit', handleProfileSubmit);
 formAddCard.addEventListener('submit', handleAddCardSubmit);
