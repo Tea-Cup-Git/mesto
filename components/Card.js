@@ -1,10 +1,11 @@
-import {openPopup, popupExpandedImage} from './utils.js';
+// import PopupWithImage from './PopupWithImage.js';
 
 export default class Card {
-  constructor(data, cardSelector) {
-    this._name = data.name;
-    this._link = data.link;
-    this._alt = data.alt;
+  constructor({item, handleCardClick}, cardSelector) {
+    this._name = item.name;
+    this._link = item.link;
+    this._alt = item.alt;
+    this._handleCardClick = handleCardClick;
     this._cardSelector = cardSelector;
   }
 
@@ -15,16 +16,6 @@ export default class Card {
       .querySelector('.card')
       .cloneNode(true);
     return cardElement;
-  }
-
-  // Развернуть картинку
-  _popupExpandedImage() {
-    this._popupImage = document.querySelector('.popup__image');
-    this._cardImage = this._element.querySelector('.card__image');
-    this._popupImage.src = this._cardImage.src;
-    this._popupImage.alt = this._cardImage.alt;
-    document.querySelector('.popup__figcaption').textContent = this._cardImage.alt;
-    openPopup(popupExpandedImage);
   }
 
   // Переключатель лайков
@@ -43,13 +34,13 @@ export default class Card {
       this._toggleLike();
     });
     this._element.querySelector('.card__image').removeEventListener('click', () => {
-      this._popupExpandedImage();
+      this._handleCardClick(event);
     });
   }
 
   _setEventListeners() {
     this._element.querySelector('.card__image').addEventListener('click', () => {
-      this._popupExpandedImage();
+      this._handleCardClick(event);
     });
     this._element.querySelector('.card__like-button').addEventListener('click', () => {
       this._toggleLike();

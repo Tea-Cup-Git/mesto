@@ -1,0 +1,19 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "Сервис **Mesto** - интерактивная страница, куда можно добавлять фотографии, удалять их и ставить лайки. Проект создан в рамках 3 и 4 курса факультета веб-разработки [**Яндекс** Практикум](https://praktikum.yandex.ru/).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tea-Cup-Git/mesto.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tea-Cup-Git/mesto/issues"
+  },
+  "homepage": "https://github.com/Tea-Cup-Git/mesto#readme"
+}
