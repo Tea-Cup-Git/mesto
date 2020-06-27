@@ -27,24 +27,6 @@ formProfileValidator.enableValidation();
 const formAddCardValidator = new FormValidator(formConfig, formAddCard);
 formAddCardValidator.enableValidation();
 
-// function openProfilePopup() {
-//   resetErrors(popupEditProfile);
-//   inputProfileName.value = profileName.textContent;
-//   inputProfileAbout.value = profileAbout.textContent;
-//   openPopup(popupEditProfile);
-// }
-
-// Сохранить данные профиля
-// function handleProfileSubmit(event) {
-//   event.preventDefault();
-//   profileName.textContent = inputProfileName.value;
-//   profileAbout.textContent = inputProfileAbout.value;
-//   closePopup(popupEditProfile);
-//   // Сброс состояния кнопки
-//   submitEditButton.classList.add(formConfig.inactiveButtonClass);
-//   submitEditButton.disabled = true;
-// }
-
 // Загрузить дефолтные карточки
 const cardsList = new Section({
   items: initialCards,
