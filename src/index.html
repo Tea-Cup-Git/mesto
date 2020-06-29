@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
   <meta name="author" content="Tatiana Lebedeva">
   <title>Mesto</title>
 </head>
@@ -33,7 +32,7 @@
       <section class="photo-grid">
         <template id="card-template"> <!--Шаблон карточки, заполняется через JS-->
           <div class="card">
-            <img class="card__image" src="" alt="">
+            <img class="card__image" src="#" alt="">
             <p class="card__name"></p>
             <button class="card__trash-button"></button> <!--Кнопка: удалить карточку-->
             <button class="card__like-button"></button> <!--Кнопка: лайк-->
@@ -67,7 +66,7 @@
     </div>
     <div id="image-expander" class="popup">
       <figure class="popup__container popup__container_img">
-        <img class="popup__image" src="" alt="">
+        <img class="popup__image" src="#" alt="">
         <figcaption class="popup__figcaption"></figcaption>
         <button id="image-expander_close-button" class="popup__close-button" type="reset"></button> <!--Кнопка: закрыть-->
       </figure>
@@ -77,8 +76,6 @@
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
   </div>
-  <!--Подключаем JS-->
-  <script type="module" src="./pages/index.js"></script>
 </body>
 
 </html>

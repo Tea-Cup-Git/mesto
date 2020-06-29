@@ -20,6 +20,7 @@ import {
   inputCardName,
   inputCardImage
 } from '../utils/constants.js';
+import './index.css';
 
 // Включить валидацию форм
 const formProfileValidator = new FormValidator(formConfig, formProfile);
