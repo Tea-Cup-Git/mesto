@@ -4,7 +4,8 @@
 Проект создан в рамках 3 и 4 курса факультета веб-разработки [**Яндекс** Практикум](https://praktikum.yandex.ru/).
 
 #### Что реализовано:
-* Методология БЭМ.
+* Методология БЭМ для CSS.
+* Методология ООП для JS.
 * Файловая структура Nested для БЭМ.
 * Адаптивность для разных разрешений экрана.
 * Flex - для позиционирования блоков и элементов.
@@ -19,4 +20,4 @@
 
 [**Figma** ссылка на макет](https://www.figma.com/file/StZjf8HnoeLdiXS7dYrLAh/JavaScript.-Sprint-4)
 
-[**Github Pages** ссылка на проект](https://tea-cup-git.github.io/mesto/index.html)
+[**Github Pages** ссылка на проект](https://tea-cup-git.github.io/mesto/build/index.html)
