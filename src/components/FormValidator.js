@@ -20,6 +20,18 @@ export default class FormValidator {
     errorElement.textContent = '';
   }
 
+  // Очистить ошибки полей ввода
+  resetErrors(formConfig) {
+    const errors = this._formElement.querySelectorAll(formConfig.inputErrorClass);
+    errors.forEach(error => error.classList.remove(formConfig.errorClass));
+  }
+
+  // Сброс состояния кнопки сабмита
+  resetButton(formConfig) {
+    this._formElement.querySelector(formConfig.buttonSelector).classList.add(formConfig.inactiveButtonClass);
+    this._formElement.querySelector(formConfig.buttonSelector).disabled = true;
+  }
+
   // Проверить валидность поля
   _checkInputValidity(formElement, inputElement, formConfig) {
     if (!inputElement.validity.valid) {

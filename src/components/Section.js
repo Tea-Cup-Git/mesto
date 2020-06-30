@@ -5,13 +5,12 @@ export default class Section {
     this._container = containerSelector;
   }
 
-  addItem(element, initialCards) {
-    if(initialCards) {
-      this._container.append(element);
-    } else {
-      this._container.prepend(element);
-    }
+  setItem(element) {
+    this._container.append(element);
+  }
 
+  addItem(element) {
+    this._container.prepend(element);
   }
 
   renderItems() {
