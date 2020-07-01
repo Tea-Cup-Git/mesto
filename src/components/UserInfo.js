@@ -13,7 +13,6 @@ export default class UserInfo {
       name: this._userName.textContent,
       about: this._userAbout.textContent
     }
-    console.log(userData);
     return userData;
   }
 
@@ -22,6 +21,5 @@ export default class UserInfo {
     userData.about = this._inputAbout.value;
     this._userName.textContent = userData.name;
     this._userAbout.textContent = userData.about;
-    console.log(userData);
   }
 }

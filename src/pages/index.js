@@ -24,6 +24,7 @@ const inputProfileName = document.querySelector('.popup__input_type_user-name');
 const inputProfileAbout = document.querySelector('.popup__input_type_user-about');
 const inputCardName = document.querySelector('.popup__input_type_place-name');
 const inputCardImage = document.querySelector('.popup__input_type_image-link');
+const figCaption = document.querySelector('.popup__figcaption');
 
 // Включить валидацию форм
 const formProfileValidator = new FormValidator(formConfig, formProfile);
@@ -49,7 +50,7 @@ const popupWithProfileForm = new PopupWithForm({
   handleFormSubmit: (userData) => {
     userInfo.setUserInfo(userData);
   }
-}, formProfileValidator);
+}, formProfileValidator, formConfig);
 popupWithProfileForm.setEventListeners();
 
 // Загрузить дефолтные карточки
@@ -71,7 +72,8 @@ cardList.renderItems();
 // Pop-Up с картинкой
 const popupWithImage = new PopupWithImage({
   popupSelector: popupExpandedImage,
-  imageSelector: '.popup__image'
+  imageSelector: '.popup__image',
+  textSelector: figCaption
 });
 popupWithImage.setEventListeners();
 
@@ -92,7 +94,7 @@ const popupWithAddForm = new PopupWithForm({
     const cardElement = card.generateCard();
     cardList.addItem(cardElement);
   }
-}, formAddCardValidator);
+}, formAddCardValidator, formConfig);
 popupWithAddForm.setEventListeners();
 
 // Обработчики кнопок

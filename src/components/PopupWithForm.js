@@ -1,11 +1,11 @@
 import Popup from './Popup.js';
-import { formConfig } from '../utils/constants.js';
 
 export default class PopupWithForm extends Popup {
-  constructor({ popupSelector, handleFormSubmit }, className) {
+  constructor({ popupSelector, handleFormSubmit }, className, config) {
     super(popupSelector);
     this._handleFormSubmit = handleFormSubmit;
     this._className = className;
+    this._config = config;
   }
 
   _getInputValues() {
@@ -38,7 +38,7 @@ export default class PopupWithForm extends Popup {
   close() {
     super.close();
     this._popupSelector.querySelector('.popup__container').reset();
-    this._className.resetErrors(formConfig);
-    this._className.resetButton(formConfig);
+    this._className.resetErrors(this._config);
+    this._className.resetButton(this._config);
   }
 }
