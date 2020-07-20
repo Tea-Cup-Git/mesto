@@ -18,24 +18,31 @@
     <main class="content">
       <!--Данные профиля-->
       <section class="profile">
-        <img class="profile__avatar" src="images/image.jpg" alt="Аватар пользователя">
+        <div class="profile__avatar-container">
+          <img class="profile__avatar" src="#" alt="Аватар пользователя">
+        </div>
+        <button class="profile__avatar-button" type="button"></button>
         <div class="profile__info">
           <div class="profile__button-wrapper">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button"></button> <!--Кнопка: редактировать профиль-->
+            <button class="profile__edit-button" type="button"></button>
           </div>
           <p class="profile__about">Исследователь океана</p>
         </div>
-        <button class="profile__add-button"></button> <!--Кнопка: добавить карточку-->
+        <button class="profile__add-button" type="button"></button>
       </section>
       <!--Сетка с карточками-->
       <section class="photo-grid">
-        <template id="card-template"> <!--Шаблон карточки, заполняется через JS-->
+        <!--Шаблон карточки, заполняется в JS-->
+        <template id="card-template">
           <div class="card">
             <img class="card__image" src="#" alt="">
             <p class="card__name"></p>
-            <button class="card__trash-button"></button> <!--Кнопка: удалить карточку-->
-            <button class="card__like-button"></button> <!--Кнопка: лайк-->
+            <button class="card__trash-button" type="button"></button>
+            <div class="card__likes">
+              <button class="card__like-button" type="button"></button>
+              <p class="card__like-count">0</p>
+            </div>
           </div>
         </template>
       </section>
@@ -44,32 +51,57 @@
     <div id="edit-form" class="popup">
       <form id="edit-form_container" class="popup__container" novalidate>
         <h2 class="popup__header">Редактировать профиль</h2>
-        <input id="user-input" class="popup__input popup__input_type_user-name" type="text" minlength="2" maxlength="40" value="" placeholder="Имя" required>
+        <input id="user-input" class="popup__input popup__input_type_user-name"
+               name="userName" type="text" minlength="2" maxlength="40" pattern="[a-zA-Zа-яА-Я -]{1,}"
+               value="" placeholder="Имя" required>
         <span id="user-input-error" class="popup__input-error"></span>
-        <input id="about-input" class="popup__input popup__input_type_user-about" type="text" minlength="2" maxlength="200" value="" placeholder="О себе" required>
+        <input id="about-input" class="popup__input popup__input_type_user-about"
+               name="userAbout" type="text" minlength="2" maxlength="200" value="" placeholder="О себе" required>
         <span id="about-input-error" class="popup__input-error"></span>
-        <button id="edit-form-submit" class="popup__submit-button" type="submit">Сохранить</button> <!--Кнопка: сохранить-->
-        <button id="edit-form_close-button" class="popup__close-button"  type="reset"></button> <!--Кнопка: закрыть-->
+        <button id="edit-form-submit" class="popup__submit-button" type="submit">Сохранить</button>
+        <button id="edit-form_close-button" class="popup__close-button"  type="reset"></button>
       </form>
     </div>
     <!--Всплывающее окно: добавить карточку-->
     <div id="add-form" class="popup">
       <form id="add-form_container" class="popup__container" novalidate>
         <h2 class="popup__header">Новое место</h2>
-        <input id="name-input" class="popup__input popup__input_type_place-name" type="text" minlength="1" maxlength="30" value="" placeholder="Название" required>
+        <input id="name-input" class="popup__input popup__input_type_place-name"
+               name="name" type="text" minlength="1" maxlength="30" value="" placeholder="Название" required>
         <span id="name-input-error" class="popup__input-error"></span>
-        <input id="link-input" class="popup__input popup__input_type_image-link" type="url" value="" placeholder="Ссылка на картинку" required>
+        <input id="link-input" class="popup__input popup__input_type_image-link"
+               name="link" type="url" value="" placeholder="Ссылка на изображение" required>
         <span id="link-input-error" class="popup__input-error"></span>
-        <button id="add-form-submit" class="popup__submit-button" type="submit">Создать</button> <!--Кнопка: создать-->
-        <button id="add-form_close-button" class="popup__close-button" type="reset"></button> <!--Кнопка: закрыть-->
+        <button id="add-form-submit" class="popup__submit-button" type="submit">Создать</button>
+        <button id="add-form_close-button" class="popup__close-button" type="reset"></button>
       </form>
     </div>
+    <!--Всплывающее окно: развернуть картинку-->
     <div id="image-expander" class="popup">
       <figure class="popup__container popup__container_img">
         <img class="popup__image" src="#" alt="">
         <figcaption class="popup__figcaption"></figcaption>
-        <button id="image-expander_close-button" class="popup__close-button" type="reset"></button> <!--Кнопка: закрыть-->
+        <button id="image-expander_close-button" class="popup__close-button" type="reset"></button>
       </figure>
+    </div>
+    <!--Всплывающее окно: изменить аватар пользователя-->
+    <div id="change-avatar" class="popup">
+      <form id="avatar-form_container" class="popup__container">
+        <h2 class="popup__header">Обновить аватар</h2>
+        <input id="avatar-input" class="popup__input popup__input_type_image-link"
+               name="userAvatar" type="url" value="" placeholder="Ссылка на изображение" required>
+        <span id="avatar-input-error" class="popup__input-error"></span>
+        <button class="popup__submit-button" type="submit">Сохранить</button>
+        <button class="popup__close-button" type="reset"></button>
+      </form>
+    </div>
+    <!--Всплывающее окно: подтвердить удаление карточки-->
+    <div id="confirm-delete" class="popup">
+      <form class="popup__container">
+        <h2 class="popup__header">Вы уверены?</h2>
+        <button class="popup__submit-button" type="submit">Да</button>
+        <button class="popup__close-button" type="reset"></button>
+      </form>
     </div>
     <!--Подвал-->
     <footer class="footer">
