@@ -16,21 +16,19 @@ import {
   popupAddCard,
   popupExpandedImage,
   popupConfirmDelete,
-  popupChangeAvatar
+  popupChangeAvatar,
+  profileName,
+  profileAbout,
+  profileAvatar,
+  formProfile,
+  formAddCard,
+  formAvatar,
+  inputProfileName,
+  inputProfileAbout,
+  figCaption
 } from '../utils/constants.js';
-import { renderLoading } from '../utils/utils.js'
+import { renderLoading } from '../utils/utils.js';
 import './index.css';
-
-const profileName = document.querySelector('.profile__name');
-const profileAbout = document.querySelector('.profile__about');
-const profileAvatar = document.querySelector('.profile__avatar');
-const formProfile = document.querySelector('#edit-form_container');
-const formAddCard = document.querySelector('#add-form_container');
-const formAvatar = document.querySelector('#avatar-form_container');
-const inputProfileName = document.querySelector('.popup__input_type_user-name');
-const inputProfileAbout = document.querySelector('.popup__input_type_user-about');
-const inputProfileAvatar = document.querySelector('#avatar-input');
-const figCaption = document.querySelector('.popup__figcaption');
 
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-13',
@@ -48,6 +46,12 @@ const popupWithImage = new PopupWithImage({
 });
 // Pop-Up подтверждения удаления карточки
 const popupWithConfirm = new PopupWithConfirm(popupConfirmDelete);
+// Данные пользователя
+const userInfo = new UserInfo({
+  userName: profileName,
+  userAbout: profileAbout,
+  userAvatar: profileAvatar
+});
 
 api.getAllData()
   .then(([ cardsArray, userData ]) => {
@@ -92,13 +96,6 @@ api.getAllData()
         }
       }
     }
-
-    // Данные пользователя
-    const userInfo = new UserInfo({
-      userName: profileName,
-      userAbout: profileAbout,
-      userAvatar: profileAvatar
-    });
 
     userInfo.setUserInfo({
       userName: userData.name,
@@ -198,6 +195,7 @@ api.getAllData()
       popupWithAvatar.open();
     })
   })
+  .catch((error) => console.error(error))
   .finally(() => {
     // Включить валидацию форм
     formProfileValidator.enableValidation();
