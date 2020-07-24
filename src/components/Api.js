@@ -14,10 +14,6 @@ export default class Api {
     }
   }
 
-  _handleError(err) {
-    console.error(err);
-  }
-
   getAllData() {
     return Promise.all([this.getInitialCards(), this.getUserInfo()]);
   }
@@ -29,7 +25,6 @@ export default class Api {
       }
     })
       .then(this._handleResponse)
-      .catch(this._handleError)
   }
 
   addCard({ name, link, alt }) {
@@ -47,7 +42,6 @@ export default class Api {
       })
     })
       .then(this._handleResponse)
-      .catch(this._handleError)
   }
 
   removeCard(cardID) {
@@ -58,7 +52,6 @@ export default class Api {
       }
     })
       .then(this._handleResponse)
-      .catch(this._handleError)
   }
 
   getUserInfo() {
@@ -68,7 +61,6 @@ export default class Api {
       }
     })
       .then(this._handleResponse)
-      .catch(this._handleError)
   }
 
   setUserInfo({ name, about }) {
@@ -85,7 +77,6 @@ export default class Api {
       })
     })
       .then(this._handleResponse)
-      .catch(this._handleError)
   }
 
   setUserAvatar({ avatar }) {
@@ -102,7 +93,6 @@ export default class Api {
       })
     })
       .then(this._handleResponse)
-      .catch(this._handleError)
   }
 
   putLike(cardID) {
@@ -114,7 +104,6 @@ export default class Api {
       }
     })
       .then(this._handleResponse)
-      .catch(this._handleError)
   }
 
   removeLike(cardID) {
@@ -126,6 +115,5 @@ export default class Api {
       }
     })
       .then(this._handleResponse)
-      .catch(this._handleError)
   }
 }

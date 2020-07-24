@@ -69,6 +69,7 @@ api.getAllData()
                 cardsArray.splice(index, 1, data);
                 card.setLikesInfo({...data});
               })
+              .catch((error) => console.error(error))
           } else {
             api.removeLike(card.id())
               .then(data => {
@@ -76,6 +77,7 @@ api.getAllData()
                 cardsArray.splice(index, 1, data);
                 card.setLikesInfo({...data});
               })
+              .catch((error) => console.error(error))
           }
 
         },
@@ -89,6 +91,7 @@ api.getAllData()
                 });
                 card.removeCard()
               })
+              .catch((error) => console.error(error))
               .finally(() => {
                 popupWithConfirm.close();
               });
@@ -117,6 +120,7 @@ api.getAllData()
               userAbout: result.about
             })
           })
+          .catch((error) => console.error(error))
           .finally(() => {
             renderLoading();
             popupWithProfileForm.close();
@@ -136,6 +140,7 @@ api.getAllData()
               userAvatar: result.avatar
             })
           })
+          .catch((error) => console.error(error))
           .finally(() => {
             renderLoading();
             popupWithAvatar.close();
@@ -152,6 +157,7 @@ api.getAllData()
             const card = new Card(getCardData(cardData), '#card-template');
             cardList.addItem(card.generateCard());
           })
+          .catch((error) => console.error(error))
           .finally(() => {
             renderLoading();
             popupWithAddForm.close();
